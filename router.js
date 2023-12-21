@@ -27,8 +27,8 @@ const uploadFile = async (fileObject) => {
          mimeType: fileObject.mimeType,
          body: bufferStream
       },
-      requestBody:{
-         name:fileObject.originalname,
+      requestBody: {
+         name: fileObject.originalname,
          parents: ['164iJb_nA8NHKinpYDrn1HeJcpgaqlwhz']
       },
       fields: 'id, name'
@@ -40,9 +40,7 @@ uploadRouter.post('/upload', upload.any('Files'), async (req, res) => {
    try {
       const { body, files } = req;
 
-      for (let f = 0; f < files.length; f += 1) {
-         await uploadFile(files[f])
-      };
+      await uploadFile(files)
 
       console.log(body);
       res.status(200).send("Form submitted")
