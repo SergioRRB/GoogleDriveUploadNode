@@ -1,5 +1,5 @@
 const express = require('express');
-const uploadRouter = require('./router');
+const router = require('./routes/upload.routes');
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.get('/', (_req, res) => {
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true }));
-app.use(uploadRouter);
+app.use(router)
 
 app.listen(5000, () => {
    console.log('Server running on port 5000');
